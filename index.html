@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Download Bowens FPS Mod Pack</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; display:flex; align-items:center; justify-content:center; height:100vh; margin:0; background:#f6f8fa }
+    .card { background:white; padding:28px; border-radius:12px; box-shadow:0 6px 24px rgba(15,23,42,0.08); width:min(680px,92%); text-align:center }
+    button { background:#0366d6; color:white; border:0; padding:12px 18px; border-radius:8px; font-size:16px; cursor:pointer }
+    a.buttonlike { text-decoration:none }
+    p { color:#333 }
+    .note { margin-top:12px; color:#555; font-size:14px }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Bowens FPS Mod Pack</h1>
+    <p>Click the button below to download the mod pack to your computer.</p>
+    <p>
+      <button id="downloadBtn">Download Now</button>
+    </p>
+    <p class="note">If the automatic download is blocked by your browser, the page will open the file in a new tab so you can save it manually.</p>
+  </div>
+
+  <script>
+    (function(){
+      const url = 'https://cdn.discordapp.com/attachments/1525531127672996064/1525531440857481226/Bowens_fps_Mod_pack.zip?ex=6a53b95e&is=6a5267de&hm=a2d638c2b28ae6bc53c05d4535a7774147340fef0fbfe2cddf04eacb52d22f46&';
+      const fileName = 'Bowens_fps_Mod_pack.zip';
+      const btn = document.getElementById('downloadBtn');
+      btn.addEventListener('click', async function(){
+        btn.disabled = true;
+        btn.textContent = 'Starting download...';
+
+        // Try programmatic fetch -> blob -> download (works when CORS allows it)
+        try {
+          const resp = await fetch(url, { mode: 'cors' });
+          if (!resp.ok) throw new Error('Network response not ok: ' + resp.status);
+          const blob = await resp.blob();
+          const blobUrl = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.style.display = 'none';
+          a.href = blobUrl;
+          a.download = fileName;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(blobUrl);
+          a.remove();
+          btn.textContent = 'Download started';
+        } catch (e) {
+          // Likely CORS or other issue — fallback: open the file URL so the browser handles it
+          console.warn('Fetch/download failed, falling back to opening the file URL:', e);
+          window.open(url, '_blank', 'noopener');
+          btn.textContent = 'Opened in new tab';
+        } finally {
+          setTimeout(()=>{ btn.disabled = false; btn.textContent = 'Download Now'; }, 2500);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
