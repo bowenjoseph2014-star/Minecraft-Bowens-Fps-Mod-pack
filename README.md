@@ -6,10 +6,10 @@ This repository contains a simple webpage (index.html) that provides a "Download
 
 Want to play with us? Join the Bowens FPS server!
 
-| Edition  | Address |
-|----------|---------|
-| **Java** | `slugpve.minekeep.gg` |
-| **Bedrock** | `slugpve.bedrock.minekeep.gg` |
+| Edition  | Address | Port |
+|----------|---------|------|
+| **Java** | `pveslug.minekeep.gg` | `25565` |
+| **Bedrock** | `pveslug.bedrock.minekeep.gg` | `25565` |
 
 ## Files
 
