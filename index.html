@@ -14,6 +14,9 @@
     p { color:#333 }
     .note { margin-top:12px; color:#555; font-size:14px }
     .section-divider { margin:24px 0; border-top:1px solid #e0e0e0; padding-top:24px }
+    table.server-info { width:100%; border-collapse:collapse; margin-top:12px }
+    table.server-info th, table.server-info td { padding:8px; border:1px solid #e9e9e9; text-align:left }
+    table.server-info th { background:#f6f8fa; color:#333 }
   </style>
 </head>
 <body>
@@ -26,6 +29,31 @@
     <p class="note">If the automatic download is blocked by your browser, the page will open the file in a new tab so you can save it manually.</p>
 
     <div class="section-divider">
+      <h2>Want to play with us? Join the Bowens FPS server!</h2>
+      <table class="server-info" aria-label="Bowens FPS server information">
+        <thead>
+          <tr>
+            <th>Edition</th>
+            <th>Address</th>
+            <th>Port</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Java</td>
+            <td>pveslug.minekeep.gg</td>
+            <td>25565</td>
+          </tr>
+          <tr>
+            <td>Bedrock</td>
+            <td>pveslug.bedrock.minekeep.gg</td>
+            <td>25565</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-divider">
       <h2>Prizim Launcher</h2>
       <p>Download Prizim Launcher to manage and run your Minecraft mods more easily.</p>
       <p>
@@ -36,7 +64,7 @@
 
   <script>
     (function(){
-      const url = 'https://cdn.discordapp.com/attachments/1525531127672996064/1525531440857481226/Bowens_fps_Mod_pack.zip?ex=6a53b95e&is=6a5267de&hm=a2d638c2b28ae6bc53c05d4535a7774147340fef0fbfe2c';
+      const url = 'https://cdn.discordapp.com/attachments/1525531127672996064/1525531440857481226/Bowens_fps_Mod_pack.zip';
       const fileName = 'Bowens_fps_Mod_pack.zip';
       const btn = document.getElementById('downloadBtn');
       btn.addEventListener('click', async function(){
