@@ -2,9 +2,18 @@
 
 This repository contains a simple webpage (index.html) that provides a "Download Now" button to download the Bowens FPS Mod Pack ZIP file from a Discord CDN URL.
 
+## 🎮 Join Our Server
+
+Want to play with us? Join the Bowens FPS server!
+
+| Edition  | Address |
+|----------|---------|
+| **Java** | `slugpve.minekeep.gg` |
+| **Bedrock** | `slugpve.bedrock.minekeep.gg` |
+
 ## Files
 
-- `index.html` — A single-page site with a button that attempts a programmatic download (fetch -> blob -> save). If that fails (CORS or expired link), it opens the file URL in a new tab so the browser can handle the download.
+- `index.html` — A single-page site with a button that attempts a programmatic download (fetch -> blob -> save). If that fails (CORS or expired link), it opens the file URL in a new tab so the browser can save it manually.
 - `README.md` — This file.
 
 ## How it works
@@ -14,7 +23,7 @@ This repository contains a simple webpage (index.html) that provides a "Download
 
 ## Notes about the download URL
 
-The current download URL in `index.html` points to a Discord CDN link that includes temporary query parameters. Those tokens can expire and will cause downloads to fail (e.g. 403). For reliable, long-term hosting, consider one of the following:
+The current download URL in `index.html` points to a Discord CDN link that includes temporary query parameters. Those tokens can expire and will cause downloads to fail (e.g. 403). For reliable, long-term downloads, consider:
 
 - Upload the ZIP as a GitHub Release asset and update `index.html` to point to the release asset URL.
 - Host the ZIP on a stable CDN or object storage (S3, Cloudflare R2, etc.) with proper CORS headers.
