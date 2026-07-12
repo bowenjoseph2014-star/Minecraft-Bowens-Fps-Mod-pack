@@ -2,6 +2,12 @@
 
 This repository contains a simple webpage (index.html) that provides a "Download Now" button to download the Bowens FPS Mod Pack ZIP file from a Discord CDN URL.
 
+## 🌐 Visit the Website
+
+**[👉 Click here to go to the download website](https://bowenjoseph2014-star.github.io/Minecraft-Bowens-Fps-Mod-pack/)**
+
+---
+
 ## 🎮 Join Our Server
 
 Want to play with us? Join the Bowens FPS server!
