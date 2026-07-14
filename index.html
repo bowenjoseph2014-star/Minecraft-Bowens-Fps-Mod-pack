@@ -5,30 +5,84 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Download Bowens FPS Mod Pack</title>
   <style>
-    @keyframes lavaMove {
-      0% { transform: translateY(0px) scale(1); opacity: 0.8; }
-      50% { transform: translateY(-20px) scale(1.1); opacity: 0.6; }
-      100% { transform: translateY(0px) scale(1); opacity: 0.8; }
-    }
-
     @keyframes lavaBubble1 {
-      0% { left: 10%; bottom: -10%; }
-      100% { left: 15%; bottom: 110%; }
+      0% { left: 5%; bottom: -100px; opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { left: 12%; bottom: calc(100vh + 100px); opacity: 0; }
     }
 
     @keyframes lavaBubble2 {
-      0% { left: 30%; bottom: -10%; }
-      100% { left: 28%; bottom: 110%; }
+      0% { right: 8%; bottom: -150px; opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% { right: 15%; bottom: calc(100vh + 150px); opacity: 0; }
     }
 
     @keyframes lavaBubble3 {
-      0% { left: 60%; bottom: -10%; }
-      100% { left: 65%; bottom: 110%; }
+      0% { left: 25%; bottom: -120px; opacity: 0; }
+      10% { opacity: 0.65; }
+      90% { opacity: 0.65; }
+      100% { left: 28%; bottom: calc(100vh + 120px); opacity: 0; }
     }
 
     @keyframes lavaBubble4 {
-      0% { left: 80%; bottom: -10%; }
-      100% { left: 78%; bottom: 110%; }
+      0% { right: 20%; bottom: -80px; opacity: 0; }
+      10% { opacity: 0.75; }
+      90% { opacity: 0.75; }
+      100% { right: 25%; bottom: calc(100vh + 80px); opacity: 0; }
+    }
+
+    @keyframes lavaBubble5 {
+      0% { left: 40%; bottom: -110px; opacity: 0; }
+      10% { opacity: 0.68; }
+      90% { opacity: 0.68; }
+      100% { left: 45%; bottom: calc(100vh + 110px); opacity: 0; }
+    }
+
+    @keyframes lavaBubble6 {
+      0% { right: 35%; bottom: -95px; opacity: 0; }
+      10% { opacity: 0.72; }
+      90% { opacity: 0.72; }
+      100% { right: 32%; bottom: calc(100vh + 95px); opacity: 0; }
+    }
+
+    @keyframes lavaBubble7 {
+      0% { left: 60%; bottom: -130px; opacity: 0; }
+      10% { opacity: 0.64; }
+      90% { opacity: 0.64; }
+      100% { left: 62%; bottom: calc(100vh + 130px); opacity: 0; }
+    }
+
+    @keyframes lavaBubble8 {
+      0% { right: 45%; bottom: -105px; opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.7; }
+      100% { right: 48%; bottom: calc(100vh + 105px); opacity: 0; }
+    }
+
+    @keyframes lavaGlow1 {
+      0% { transform: scale(0.8); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+      100% { transform: scale(0.8); opacity: 0.3; }
+    }
+
+    @keyframes lavaGlow2 {
+      0% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(0.8); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 0.4; }
+    }
+
+    @keyframes lavaShift {
+      0% { background-position: 0% 0%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 0% 100%; }
+      75% { background-position: 50% 50%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -37,133 +91,258 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      min-width: 100vw;
       margin: 0;
-      padding: 20px;
+      padding: 2vmin;
       background: #0a0a0a;
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       overflow: hidden;
     }
 
-    /* Lava lamp background */
-    body::before {
-      content: '';
+    /* Multiple lava lamp layers */
+    .lava-bg-layer {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 50%, rgba(255, 100, 0, 0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255, 50, 0, 0.15) 0%, transparent 50%),
-                  radial-gradient(circle at 50% 20%, rgba(255, 150, 0, 0.1) 0%, transparent 50%);
-      animation: lavaMove 8s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
+      z-index: -10;
     }
 
-    body::after {
-      content: '';
+    .lava-layer-1 {
+      background: 
+        radial-gradient(ellipse 80vw 60vh at 20% 30%, rgba(255, 100, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse 70vw 70vh at 80% 70%, rgba(255, 50, 0, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse 90vw 50vh at 50% 10%, rgba(255, 150, 0, 0.2) 0%, transparent 50%);
+      animation: lavaShift 15s ease-in-out infinite;
+    }
+
+    .lava-layer-2 {
+      background: 
+        radial-gradient(ellipse 100vw 80vh at 30% 60%, rgba(255, 80, 0, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 85vw 65vh at 70% 40%, rgba(255, 60, 0, 0.2) 0%, transparent 50%);
+      animation: lavaShift 20s ease-in-out infinite reverse;
+    }
+
+    .lava-layer-3 {
+      background: 
+        radial-gradient(ellipse 120vw 100vh at 40% 50%, rgba(255, 120, 0, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 95vw 75vh at 60% 80%, rgba(255, 90, 0, 0.18) 0%, transparent 50%);
+      animation: lavaShift 25s ease-in-out infinite;
+    }
+
+    .lava-layer-4 {
+      background: 
+        radial-gradient(ellipse 110vw 90vh at 50% 50%, rgba(255, 70, 0, 0.12) 0%, transparent 70%);
+      animation: lavaShift 18s ease-in-out infinite reverse;
+    }
+
+    /* Glow orbs */
+    .glow-orb {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #0a0a0a;
-      pointer-events: none;
-      z-index: -2;
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: -9;
     }
 
-    /* Floating lava bubbles */
+    .glow-orb-1 {
+      width: 30vw;
+      height: 30vw;
+      top: 10%;
+      left: 5%;
+      background: radial-gradient(circle, rgba(255, 100, 0, 0.4), transparent 70%);
+      animation: lavaGlow1 6s ease-in-out infinite;
+    }
+
+    .glow-orb-2 {
+      width: 35vw;
+      height: 35vw;
+      top: 50%;
+      right: 5%;
+      background: radial-gradient(circle, rgba(255, 50, 0, 0.35), transparent 70%);
+      animation: lavaGlow2 7s ease-in-out infinite;
+    }
+
+    .glow-orb-3 {
+      width: 25vw;
+      height: 25vw;
+      bottom: 10%;
+      left: 20%;
+      background: radial-gradient(circle, rgba(255, 120, 0, 0.3), transparent 70%);
+      animation: lavaGlow1 8s ease-in-out infinite reverse;
+    }
+
+    .glow-orb-4 {
+      width: 28vw;
+      height: 28vw;
+      bottom: 20%;
+      right: 15%;
+      background: radial-gradient(circle, rgba(255, 80, 0, 0.32), transparent 70%);
+      animation: lavaGlow2 5.5s ease-in-out infinite;
+    }
+
+    /* Floating bubbles */
     .lava-bubble {
       position: fixed;
-      bottom: -10%;
       border-radius: 50%;
       opacity: 0.6;
-      filter: blur(1px);
+      filter: blur(2px);
       pointer-events: none;
-      z-index: -1;
+      z-index: -8;
     }
 
     .bubble1 {
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 150, 0, 0.8), rgba(255, 100, 0, 0.4));
-      left: 10%;
-      animation: lavaBubble1 6s ease-in infinite;
+      width: 8vw;
+      height: 8vw;
+      min-width: 40px;
+      min-height: 40px;
+      max-width: 150px;
+      max-height: 150px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 150, 0, 0.9), rgba(255, 100, 0, 0.4));
+      animation: lavaBubble1 12s ease-in infinite;
     }
 
     .bubble2 {
-      width: 60px;
-      height: 60px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 100, 0, 0.7), rgba(255, 50, 0, 0.3));
-      left: 30%;
-      animation: lavaBubble2 7s ease-in infinite 1s;
+      width: 6vw;
+      height: 6vw;
+      min-width: 30px;
+      min-height: 30px;
+      max-width: 120px;
+      max-height: 120px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 100, 0, 0.8), rgba(255, 50, 0, 0.3));
+      animation: lavaBubble2 14s ease-in infinite 2s;
     }
 
     .bubble3 {
-      width: 70px;
-      height: 70px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 120, 0, 0.75), rgba(255, 80, 0, 0.35));
-      left: 60%;
-      animation: lavaBubble3 5.5s ease-in infinite 0.5s;
+      width: 7vw;
+      height: 7vw;
+      min-width: 35px;
+      min-height: 35px;
+      max-width: 135px;
+      max-height: 135px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 120, 0, 0.85), rgba(255, 80, 0, 0.35));
+      animation: lavaBubble3 11s ease-in infinite 1s;
     }
 
     .bubble4 {
-      width: 50px;
-      height: 50px;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 90, 0, 0.65), rgba(255, 40, 0, 0.25));
-      left: 80%;
-      animation: lavaBubble4 6.5s ease-in infinite 1.5s;
+      width: 5vw;
+      height: 5vw;
+      min-width: 25px;
+      min-height: 25px;
+      max-width: 100px;
+      max-height: 100px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 90, 0, 0.75), rgba(255, 40, 0, 0.25));
+      animation: lavaBubble4 13s ease-in infinite 3s;
+    }
+
+    .bubble5 {
+      width: 6.5vw;
+      height: 6.5vw;
+      min-width: 32px;
+      min-height: 32px;
+      max-width: 125px;
+      max-height: 125px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 110, 0, 0.82), rgba(255, 70, 0, 0.32));
+      animation: lavaBubble5 15s ease-in infinite 0.5s;
+    }
+
+    .bubble6 {
+      width: 7.5vw;
+      height: 7.5vw;
+      min-width: 37px;
+      min-height: 37px;
+      max-width: 145px;
+      max-height: 145px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 130, 0, 0.88), rgba(255, 90, 0, 0.38));
+      animation: lavaBubble6 12.5s ease-in infinite 1.5s;
+    }
+
+    .bubble7 {
+      width: 5.5vw;
+      height: 5.5vw;
+      min-width: 27px;
+      min-height: 27px;
+      max-width: 110px;
+      max-height: 110px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 95, 0, 0.78), rgba(255, 60, 0, 0.28));
+      animation: lavaBubble7 14.5s ease-in infinite 2.5s;
+    }
+
+    .bubble8 {
+      width: 8.5vw;
+      height: 8.5vw;
+      min-width: 42px;
+      min-height: 42px;
+      max-width: 160px;
+      max-height: 160px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 140, 0, 0.91), rgba(255, 110, 0, 0.41));
+      animation: lavaBubble8 13.5s ease-in infinite 0.8s;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+      max-height: 90vh;
+      max-width: 90vw;
+      overflow-y: auto;
     }
 
     .card {
       background: rgba(20, 20, 30, 0.95);
-      padding: 28px;
-      border-radius: 12px;
+      padding: clamp(20px, 5vw, 40px);
+      border-radius: clamp(8px, 2vw, 16px);
       box-shadow: 0 8px 32px rgba(255, 100, 0, 0.2), 0 0 40px rgba(255, 50, 0, 0.1);
-      width: min(680px, 92%);
+      width: clamp(300px, 90vw, 800px);
       text-align: center;
-      position: relative;
-      z-index: 10;
       border: 1px solid rgba(255, 100, 0, 0.2);
     }
 
     h1 {
       color: #fff;
-      margin-top: 0;
+      margin: clamp(10px, 3vw, 20px) 0;
+      font-size: clamp(24px, 6vw, 48px);
       text-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
     }
 
     h2 {
       color: #ffa500;
+      font-size: clamp(18px, 4vw, 32px);
       text-shadow: 0 0 10px rgba(255, 100, 0, 0.3);
+      margin: clamp(12px, 2vw, 20px) 0;
     }
 
     p {
       color: #ddd;
+      font-size: clamp(14px, 2.5vw, 18px);
+      margin: clamp(8px, 1.5vw, 12px) 0;
     }
 
     .note {
-      margin-top: 12px;
+      margin-top: clamp(8px, 1.5vw, 12px);
       color: #aaa;
-      font-size: 14px;
+      font-size: clamp(12px, 2vw, 14px);
     }
 
     .section-divider {
-      margin: 24px 0;
+      margin: clamp(16px, 3vw, 24px) 0;
       border-top: 1px solid rgba(255, 100, 0, 0.3);
-      padding-top: 24px;
+      padding-top: clamp(16px, 3vw, 24px);
     }
 
     a.external-link {
       display: inline-block;
       background: linear-gradient(135deg, #ff6400, #ff4500);
       color: white;
-      padding: 12px 18px;
-      border-radius: 8px;
+      padding: clamp(10px, 2vw, 14px) clamp(14px, 3vw, 20px);
+      border-radius: clamp(6px, 1.5vw, 10px);
       text-decoration: none;
-      font-size: 16px;
+      font-size: clamp(14px, 2.5vw, 16px);
       cursor: pointer;
-      margin: 5px;
+      margin: clamp(3px, 1vw, 5px);
       border: none;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(255, 100, 0, 0.3);
@@ -178,12 +357,13 @@
     table.server-info {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 12px;
+      margin-top: clamp(8px, 1.5vw, 12px);
+      font-size: clamp(12px, 2vw, 14px);
     }
 
     table.server-info th,
     table.server-info td {
-      padding: 8px;
+      padding: clamp(6px, 1.5vw, 10px);
       border: 1px solid rgba(255, 100, 0, 0.2);
       text-align: left;
       color: #ddd;
@@ -198,53 +378,91 @@
     table.server-info tbody tr:hover {
       background: rgba(255, 100, 0, 0.05);
     }
+
+    /* Scrollbar styling */
+    .content-wrapper::-webkit-scrollbar {
+      width: clamp(6px, 1vw, 12px);
+    }
+
+    .content-wrapper::-webkit-scrollbar-track {
+      background: rgba(255, 100, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .content-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(255, 100, 0, 0.4);
+      border-radius: 10px;
+    }
+
+    .content-wrapper::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 100, 0, 0.6);
+    }
   </style>
 </head>
 <body>
+  <!-- Lava lamp background layers -->
+  <div class="lava-bg-layer lava-layer-1"></div>
+  <div class="lava-bg-layer lava-layer-2"></div>
+  <div class="lava-bg-layer lava-layer-3"></div>
+  <div class="lava-bg-layer lava-layer-4"></div>
+
+  <!-- Glow orbs -->
+  <div class="glow-orb glow-orb-1"></div>
+  <div class="glow-orb glow-orb-2"></div>
+  <div class="glow-orb glow-orb-3"></div>
+  <div class="glow-orb glow-orb-4"></div>
+
+  <!-- Floating bubbles -->
   <div class="lava-bubble bubble1"></div>
   <div class="lava-bubble bubble2"></div>
   <div class="lava-bubble bubble3"></div>
   <div class="lava-bubble bubble4"></div>
+  <div class="lava-bubble bubble5"></div>
+  <div class="lava-bubble bubble6"></div>
+  <div class="lava-bubble bubble7"></div>
+  <div class="lava-bubble bubble8"></div>
 
-  <div class="card">
-    <h1>🔥 Bowens FPS Mod Pack</h1>
-    <p>To download the mod pack, join our Discord server!</p>
-    <p>
-      <a href="https://discord.gg/U9JweWuxfX" target="_blank" class="external-link">Join Discord for Download</a>
-    </p>
-    <p class="note">Click the button above to join our Discord server and get the mod pack.</p>
-
-    <div class="section-divider">
-      <h2>Want to play with us? Join the Bowens FPS server!</h2>
-      <table class="server-info" aria-label="Bowens FPS server information">
-        <thead>
-          <tr>
-            <th>Edition</th>
-            <th>Address</th>
-            <th>Port</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Java</td>
-            <td>pveslug.minekeep.gg</td>
-            <td>25565</td>
-          </tr>
-          <tr>
-            <td>Bedrock</td>
-            <td>pveslug.bedrock.minekeep.gg</td>
-            <td>19132</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-divider">
-      <h2>Prizim Launcher</h2>
-      <p>Download Prizim Launcher to manage and run your Minecraft mods more easily.</p>
+  <div class="content-wrapper">
+    <div class="card">
+      <h1>🔥 Bowens FPS Mod Pack</h1>
+      <p>To download the mod pack, join our Discord server!</p>
       <p>
-        <a href="https://www.curseforge.com/minecraft/modpacks/prizim-launcher" target="_blank" class="external-link">Download Prizim Launcher</a>
+        <a href="https://discord.gg/U9JweWuxfX" target="_blank" class="external-link">Join Discord for Download</a>
       </p>
+      <p class="note">Click the button above to join our Discord server and get the mod pack.</p>
+
+      <div class="section-divider">
+        <h2>Want to play with us? Join the Bowens FPS server!</h2>
+        <table class="server-info" aria-label="Bowens FPS server information">
+          <thead>
+            <tr>
+              <th>Edition</th>
+              <th>Address</th>
+              <th>Port</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Java</td>
+              <td>pveslug.minekeep.gg</td>
+              <td>25565</td>
+            </tr>
+            <tr>
+              <td>Bedrock</td>
+              <td>pveslug.bedrock.minekeep.gg</td>
+              <td>19132</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-divider">
+        <h2>Prizim Launcher</h2>
+        <p>Download Prizim Launcher to manage and run your Minecraft mods more easily.</p>
+        <p>
+          <a href="https://www.curseforge.com/minecraft/modpacks/prizim-launcher" target="_blank" class="external-link">Download Prizim Launcher</a>
+        </p>
+      </div>
     </div>
   </div>
 </body>
