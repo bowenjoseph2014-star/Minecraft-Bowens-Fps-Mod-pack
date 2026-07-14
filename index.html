@@ -5,24 +5,209 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Download Bowens FPS Mod Pack</title>
   <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; background:#f6f8fa; padding:20px }
-    .card { background:white; padding:28px; border-radius:12px; box-shadow:0 6px 24px rgba(15,23,42,0.08); width:min(680px,92%); text-align:center }
-    button { background:#5865F2; color:white; border:0; padding:12px 18px; border-radius:8px; font-size:16px; cursor:pointer; margin:5px }
-    button:hover { background:#4752C4; }
-    a.buttonlike { text-decoration:none }
-    a.external-link { display:inline-block; background:#28a745; color:white; padding:12px 18px; border-radius:8px; text-decoration:none; font-size:16px; cursor:pointer; margin:5px }
-    a.external-link:hover { background:#218838; }
-    p { color:#333 }
-    .note { margin-top:12px; color:#555; font-size:14px }
-    .section-divider { margin:24px 0; border-top:1px solid #e0e0e0; padding-top:24px }
-    table.server-info { width:100%; border-collapse:collapse; margin-top:12px }
-    table.server-info th, table.server-info td { padding:8px; border:1px solid #e9e9e9; text-align:left }
-    table.server-info th { background:#f6f8fa; color:#333 }
+    @keyframes lavaMove {
+      0% { transform: translateY(0px) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-20px) scale(1.1); opacity: 0.6; }
+      100% { transform: translateY(0px) scale(1); opacity: 0.8; }
+    }
+
+    @keyframes lavaBubble1 {
+      0% { left: 10%; bottom: -10%; }
+      100% { left: 15%; bottom: 110%; }
+    }
+
+    @keyframes lavaBubble2 {
+      0% { left: 30%; bottom: -10%; }
+      100% { left: 28%; bottom: 110%; }
+    }
+
+    @keyframes lavaBubble3 {
+      0% { left: 60%; bottom: -10%; }
+      100% { left: 65%; bottom: 110%; }
+    }
+
+    @keyframes lavaBubble4 {
+      0% { left: 80%; bottom: -10%; }
+      100% { left: 78%; bottom: 110%; }
+    }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      background: #0a0a0a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Lava lamp background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(255, 100, 0, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(255, 50, 0, 0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 50% 20%, rgba(255, 150, 0, 0.1) 0%, transparent 50%);
+      animation: lavaMove 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a0a;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* Floating lava bubbles */
+    .lava-bubble {
+      position: fixed;
+      bottom: -10%;
+      border-radius: 50%;
+      opacity: 0.6;
+      filter: blur(1px);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .bubble1 {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 150, 0, 0.8), rgba(255, 100, 0, 0.4));
+      left: 10%;
+      animation: lavaBubble1 6s ease-in infinite;
+    }
+
+    .bubble2 {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 100, 0, 0.7), rgba(255, 50, 0, 0.3));
+      left: 30%;
+      animation: lavaBubble2 7s ease-in infinite 1s;
+    }
+
+    .bubble3 {
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 120, 0, 0.75), rgba(255, 80, 0, 0.35));
+      left: 60%;
+      animation: lavaBubble3 5.5s ease-in infinite 0.5s;
+    }
+
+    .bubble4 {
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 90, 0, 0.65), rgba(255, 40, 0, 0.25));
+      left: 80%;
+      animation: lavaBubble4 6.5s ease-in infinite 1.5s;
+    }
+
+    .card {
+      background: rgba(20, 20, 30, 0.95);
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(255, 100, 0, 0.2), 0 0 40px rgba(255, 50, 0, 0.1);
+      width: min(680px, 92%);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      border: 1px solid rgba(255, 100, 0, 0.2);
+    }
+
+    h1 {
+      color: #fff;
+      margin-top: 0;
+      text-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+    }
+
+    h2 {
+      color: #ffa500;
+      text-shadow: 0 0 10px rgba(255, 100, 0, 0.3);
+    }
+
+    p {
+      color: #ddd;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .section-divider {
+      margin: 24px 0;
+      border-top: 1px solid rgba(255, 100, 0, 0.3);
+      padding-top: 24px;
+    }
+
+    a.external-link {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6400, #ff4500);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 100, 0, 0.3);
+    }
+
+    a.external-link:hover {
+      background: linear-gradient(135deg, #ff7f00, #ff5500);
+      box-shadow: 0 6px 20px rgba(255, 100, 0, 0.5);
+      transform: translateY(-2px);
+    }
+
+    table.server-info {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+
+    table.server-info th,
+    table.server-info td {
+      padding: 8px;
+      border: 1px solid rgba(255, 100, 0, 0.2);
+      text-align: left;
+      color: #ddd;
+    }
+
+    table.server-info th {
+      background: rgba(255, 100, 0, 0.1);
+      color: #ffa500;
+      font-weight: bold;
+    }
+
+    table.server-info tbody tr:hover {
+      background: rgba(255, 100, 0, 0.05);
+    }
   </style>
 </head>
 <body>
+  <div class="lava-bubble bubble1"></div>
+  <div class="lava-bubble bubble2"></div>
+  <div class="lava-bubble bubble3"></div>
+  <div class="lava-bubble bubble4"></div>
+
   <div class="card">
-    <h1>Bowens FPS Mod Pack</h1>
+    <h1>🔥 Bowens FPS Mod Pack</h1>
     <p>To download the mod pack, join our Discord server!</p>
     <p>
       <a href="https://discord.gg/U9JweWuxfX" target="_blank" class="external-link">Join Discord for Download</a>
